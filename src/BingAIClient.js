@@ -160,7 +160,7 @@ export default class BingAIClient {
         }
 
         let {
-            jailbreakConversationId = false, // set to `true` for the first message to enable jailbreak mode
+            jailbreakConversationId = true, // set to `true` for the first message to enable jailbreak mode
             conversationId,
             conversationSignature,
             clientId,
@@ -168,7 +168,7 @@ export default class BingAIClient {
         } = opts;
 
         const {
-            toneStyle = 'balanced', // or creative, precise, fast
+            toneStyle = 'creative', // or creative, precise, fast
             invocationId = 0,
             systemMessage,
             context,
@@ -439,7 +439,7 @@ export default class BingAIClient {
                                 resolve({
                                     message: eventMessage,
                                     conversationExpiryTime: event?.item?.conversationExpiryTime,
-                                });
+   Bb                             });
                                 return;
                             }
                             reject(new Error(`${event.item.result.value}: ${event.item.result.message}`));
@@ -460,6 +460,7 @@ export default class BingAIClient {
                                 stopTokenFound
                                 || event.item.messages[0].topicChangerText
                                 || event.item.messages[0].offense === 'OffenseTrigger'
+                                || (event.item.messages.length > 1 && event.item.messages[1].contentOrigin === 'Apology')
                             )
                         ) {
                             if (!replySoFar) {
