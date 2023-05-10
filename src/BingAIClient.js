@@ -439,7 +439,7 @@ export default class BingAIClient {
                                 resolve({
                                     message: eventMessage,
                                     conversationExpiryTime: event?.item?.conversationExpiryTime,
-   Bb                             });
+                                });
                                 return;
                             }
                             reject(new Error(`${event.item.result.value}: ${event.item.result.message}`));
