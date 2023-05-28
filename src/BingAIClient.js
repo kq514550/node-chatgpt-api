@@ -68,7 +68,7 @@ export default class BingAIClient {
                 Referer: 'https://www.bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx',
                 'Referrer-Policy': 'origin-when-cross-origin',
                 // Workaround for request being blocked due to geolocation
-                'x-forwarded-for': '1.1.1.1',
+                //'x-forwarded-for': '1.1.1.1',
             },
         };
         if (this.options.proxy) {
